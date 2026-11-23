@@ -6,7 +6,7 @@
 <title>Martiplast · Desechables y más</title>
 <meta name="description" content="Martiplast · Desechables y más. Bolsas, desechables, empaques, limpieza y artículos para bebidas y repostería. Arma tu pedido y envíalo por WhatsApp.">
 <meta name="theme-color" content="#0e0c0a">
-<link rel="icon" href="img/emblema.png">
+<link rel="icon" href="emblema.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Yesteryear&display=swap" rel="stylesheet">
@@ -372,7 +372,7 @@ aside.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px 
 <header class="nav">
   <div class="wrap">
     <a href="#inicio" class="marca" aria-label="Martiplast, inicio">
-      <img src="img/emblema.png" alt="">
+      <img src="emblema.png" alt="">
       <div><span class="nom oro-txt">Martiplast</span><small>Desechables y más</small></div>
     </a>
     <nav class="links" aria-label="Principal">
@@ -395,7 +395,7 @@ aside.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px 
   <div class="wrap">
     <div class="hero-txt">
       <span class="eyebrow">Desechables · Empaques · Limpieza · Y más</span>
-      <div class="hero-logo"><img src="img/emblema.png" alt=""><span class="oro-txt">Martiplast</span></div>
+      <div class="hero-logo"><img src="emblema.png" alt=""><span class="oro-txt">Martiplast</span></div>
       <h1>Calidad que <span class="oro-txt">sostiene</span><br>tu negocio</h1>
       <div class="subrayado"></div>
       <p class="lead">Distribuidor de desechables. Surtimos negocios, restaurantes, cafeterías y eventos. Elige tus productos, agrégalos al carrito y envíanos tu pedido por WhatsApp.</p>
@@ -490,7 +490,7 @@ aside.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px 
   <div class="wrap">
     <div class="cols">
       <div>
-        <a href="#inicio" class="marca"><img src="img/emblema.png" alt=""><div><span class="nom oro-txt">Martiplast</span><small>Desechables y más</small></div></a>
+        <a href="#inicio" class="marca"><img src="emblema.png" alt=""><div><span class="nom oro-txt">Martiplast</span><small>Desechables y más</small></div></a>
         <p style="margin-top:16px;max-width:300px">Distribuidor de desechables. Surtimos negocios, restaurantes, cafeterías y eventos.</p>
         <div class="redes">
           <a id="lnkFb" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
@@ -565,7 +565,7 @@ aside.drawer.on{transform:none;visibility:visible;box-shadow:-20px 0 50px -20px 
   </div>
 </aside>
 
-<div class="toast" id="toast" role="status" aria-live="polite"><img id="toastImg" src="img/emblema.png" alt=""><div class="t"><small>Agregado al carrito</small><span id="toastTxt"></span></div><button id="toastVer">Ver pedido</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><img id="toastImg" src="emblema.png" alt=""><div class="t"><small>Agregado al carrito</small><span id="toastTxt"></span></div><button id="toastVer">Ver pedido</button></div>
 
 <script>
 /* =========================================================
@@ -588,7 +588,7 @@ const CATEGORIAS = {
 };
 
 /* Cada producto usa 3 imágenes con el mismo nombre:
-   img/prod/<img>.webp (miniatura), img/flyer/<img>.webp (flyer completo), img/mini/<img>.webp (vitrina)
+   prod-<id>.webp (miniatura), flyer-<id>.webp (flyer completo), mini-<id>.webp (vitrina) — todos junto al index.html
    "puntos": textos tomados de cada flyer. "opciones": solo cuando el flyer las indica. */
 const PRODUCTOS = [
   // ---- Bolsas
@@ -680,7 +680,7 @@ const COLECCIONES = {
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => [...el.querySelectorAll(s)];
 const byId = Object.fromEntries(PRODUCTOS.map(p=>[p.id,p]));
-const src = (p,t='prod') => `img/${t}/${p.id}.webp`;
+const src = (p,t='prod') => `${t}-${p.id}.webp`;
 const waURL = (txt) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`;
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const esc = (s) => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -718,7 +718,7 @@ function renderCarrusel(){
 /* ---------- Colecciones, chips, footer ---------- */
 function renderColecciones(){
   $('#listaColecciones').innerHTML = Object.entries(COLECCIONES).map(([k,c])=>`
-    <button class="coleccion aparece" data-col="${k}"><img src="img/prod/${c.img}.webp" alt="" loading="lazy">
+    <button class="coleccion aparece" data-col="${k}"><img src="prod-${c.img}.webp" alt="" loading="lazy">
       <div class="t"><div><h3>${c.nombre}</h3><small>${c.ids.length} productos</small></div>
       <span class="flecha"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></button>`).join('');
   $('#footCols').innerHTML = Object.entries(COLECCIONES).map(([k,c])=>`<li><a href="#catalogo" data-col="${k}">${c.nombre}</a></li>`).join('');
